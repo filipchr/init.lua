@@ -1,11 +1,6 @@
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  sync_install = false,
-  auto_install = true,
+local Remap = require("fich.keymap")
+local nnoremap = Remap.nnoremap
 
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
+nnoremap("<leader>n", ":NvimTreeToggle<cr>")
+nnoremap("<leader>nf", ":NvimTreeFocus<cr>")
+nnoremap("<leader>nc", ":NvimTreeCollapse<cr>")
