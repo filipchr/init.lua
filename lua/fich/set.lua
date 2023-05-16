@@ -42,3 +42,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.opt.termguicolors = true
+
+vim.b.ale_javascript_eslint_executable = 'eslint_d'
+vim.b.ale_javascript_eslint_use_global = 1
+

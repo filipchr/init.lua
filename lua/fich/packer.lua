@@ -38,6 +38,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         requires = {
             'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter/nvim-treesitter-context',
         },
         run = function()
             pcall(require('nvim-treesitter.install').update { with_sync = true })
@@ -62,7 +63,26 @@ return require('packer').startup(function(use)
         cond = vim.fn.executable 'make' == 1,
     }
 
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
+    }
 
+    use {
+        'folke/trouble.nvim',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function()
+            require('trouble').setup({
+            })
+        end
+    }
+
+
+    use { 'mbbill/undotree' }
     use { 'othree/html5.vim' }
     use { 'pangloss/vim-javascript' }
     use { 'leafgarland/typescript-vim' }
@@ -73,7 +93,18 @@ return require('packer').startup(function(use)
 
     use { 'tpope/vim-fugitive' }
     use { 'tpope/vim-rhubarb' }
-    use { 'lewis6991/gitsigns.nvim' }
+    use {
+        'lewis6991/gitsigns.nvim',
+        opts = {
+            signs = {
+                add = { text = '+' },
+                change = { text = '~' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+            },
+        },
+    }
     use { 'dense-analysis/ale' }
 
     -- Themes
